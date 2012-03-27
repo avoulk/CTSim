@@ -66,9 +66,7 @@ namespace MultipleExecution
             TimeSpan duration = simEndTime -simStartTime;
             Console.WriteLine("Start time:\t" + simStartTime.ToShortTimeString());
             Console.WriteLine("End time:\t" + simEndTime.ToShortTimeString());
-            Console.WriteLine("Hours:\t" + duration.Hours);
-            Console.WriteLine("Minutes:\t" + duration.Minutes);
-            Console.WriteLine("Seconds:\t" + duration.Seconds);
+            Console.WriteLine("Duration:\t" + duration.Hours + "h " + duration.Minutes + "' " + duration.Seconds + "''");
 		}
 
 		/// <summary>
