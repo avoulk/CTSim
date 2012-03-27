@@ -1,0 +1,12 @@
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\bin\Debug\RunningTest.exe.config
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\bin\Debug\RunningTest.exe
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\bin\Debug\RunningTest.pdb
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\bin\Debug\SimLib.dll
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\bin\Debug\MathNet.Numerics.dll
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\bin\Debug\zlib.net.dll
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\bin\Debug\SimLib.pdb
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\bin\Debug\MathNet.Numerics.pdb
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\bin\Debug\MathNet.Numerics.xml
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\obj\x86\Debug\RunningTest.exe
+E:\Documents\Visual Studio 2010\Projects\Sim\RunningTest\obj\x86\Debug\RunningTest.pdb

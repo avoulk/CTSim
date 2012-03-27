@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2680EBF1-7C7B-4C70-BC23-15DF8EEBB738}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimLib</RootNamespace>
+    <AssemblyName>SimLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\..\Numerics\lib\Net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="zlib.net">
+      <HintPath>..\..\Numerics\lib\Net40\zlib.net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstractions\Networking\ActiveMessageCounter.cs" />
+    <Compile Include="Abstractions\Networking\Com.cs" />
+    <Compile Include="Abstractions\Networking\Messenger.cs" />
+    <Compile Include="Abstractions\Networking\SimpleTimer.cs" />
+    <Compile Include="Fields\Containers\DataContainer.cs" />
+    <Compile Include="Fields\IField.cs" />
+    <Compile Include="Fields\Containers\NodeContainer.cs" />
+    <Compile Include="Fields\Field.cs" />
+    <Compile Include="Properties\Simulation.cs" />
+    <Compile Include="SimMath\Distance.cs" />
+    <Compile Include="Messages\Types\Envelop.cs" />
+    <Compile Include="Messages\IMessage.cs" />
+    <Compile Include="Messages\Message.cs" />
+    <Compile Include="Messages\Types\MessageType.cs" />
+    <Compile Include="Messages\Types\MessageTargets.cs" />
+    <Compile Include="Messages\Specifics\MSGDataExchange.cs" />
+    <Compile Include="Messages\Specifics\MSGNeighborDiscovery.cs" />
+    <Compile Include="Nodes\Modules\Antenna.cs" />
+    <Compile Include="Nodes\INode.cs" />
+    <Compile Include="Nodes\Modules\MessageCountHolder.cs" />
+    <Compile Include="Nodes\Node.cs" />
+    <Compile Include="Nodes\Modules\NodeInfo.cs" />
+    <Compile Include="Nodes\Modules\PowerInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Simulation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Simulation.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Simulation.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Simulation.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
