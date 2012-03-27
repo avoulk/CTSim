@@ -48,10 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\Networking\ActiveMessageCounter.cs" />
     <Compile Include="Abstractions\Networking\Com.cs" />
-    <Compile Include="Abstractions\Networking\Messenger.cs" />
-    <Compile Include="Abstractions\Networking\SimpleTimer.cs" />
     <Compile Include="Fields\Containers\DataContainer.cs" />
     <Compile Include="Fields\IField.cs" />
     <Compile Include="Fields\Containers\NodeContainer.cs" />
