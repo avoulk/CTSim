@@ -60,12 +60,12 @@ namespace CGTF.Sim.Clustering
 			foreach (var node1 in Nodes)
 			{
 				double __Accuracy = getDataChange(node1.Data, StartData);
-				if (__Accuracy < 0)
-				{
-					continue;
-				}
 				_MinAccuracy = Math.Min(__Accuracy, _MinAccuracy); //It is actually the minimum accuracy :-)
 			}
+            if (_MinAccuracy > 1)
+            {
+                _MinAccuracy = -double.MinValue;
+            }
 			return _MinAccuracy;
 		}
 

@@ -6,7 +6,7 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="Field" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">30</Value>
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="Representatives" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">4</Value>
@@ -15,7 +15,7 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="Range" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="Energy" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1000</Value>
@@ -30,7 +30,7 @@
       <Value Profile="(Default)">95</Value>
     </Setting>
     <Setting Name="Data_Initial_Mean" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">50</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="Data_Initial_Sigma" Type="System.Double" Scope="User">
       <Value Profile="(Default)">30</Value>

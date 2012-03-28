@@ -64,9 +64,7 @@ namespace MultipleExecution
             simEndTime = DateTime.Now;
             //Show execution time statistics
             TimeSpan duration = simEndTime -simStartTime;
-            Console.WriteLine("Start time:\t" + simStartTime.ToShortTimeString());
-            Console.WriteLine("End time:\t" + simEndTime.ToShortTimeString());
-            Console.WriteLine("Duration:\t" + duration.Hours + "h " + duration.Minutes + "' " + duration.Seconds + "''");
+            Console.WriteLine("Execution duration:\t" + simStartTime.ToShortTimeString() + " - " + simEndTime.ToShortTimeString() + "  [" + +duration.Hours + "h " + duration.Minutes + "' " + duration.Seconds + "'']");
 		}
 
 		/// <summary>

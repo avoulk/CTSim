@@ -81,21 +81,10 @@ namespace CGTF.Sim.Clustering
 		/// </summary>
 		public void optimize()
 		{
-			//Fix SID, Min/Max issues
-			//Console.WriteLine("\n\n" + Info.ID + "\n=======\n");
-			//printClusters();
-			//Stopwatch stopWatch = new Stopwatch();
-			//stopWatch.Start();
 			foreach (var cluster in Clusters) { fixCSID(cluster); }
 			//Sort clusters according to their size
 			Clusters.Sort(delegate(Cluster A, Cluster B) { return A.Nodes.Count.CompareTo(B.Nodes.Count); });
-			//Sort descending
 			Clusters.Reverse();
-			//Perform actual optimization
-			//Console.WriteLine("Clusters after fix: ");
-			//printClusters();
-			//Console.WriteLine("ACC: " + getACC());
-			//Console.WriteLine("Value:\t" + ValueOfCS());
 			bool changedState = true;
 			while (changedState)
 			{
@@ -138,16 +127,9 @@ namespace CGTF.Sim.Clustering
 					other.Nodes.RemoveAll(x => x.CID == reference.ID);
 					Clusters.RemoveAll(x => x == other);
 					//Console.WriteLine("Removed CID " + other.ID);
-					//Console.WriteLine("Merged " + reference.ID + " and " + other.ID + "\tAccuracy: " + String.Format("{0:0.00}", reference.getAccuracy()));
+                    Console.WriteLine("Merged " + reference.ID + " and " + other.ID + "\tAccuracy: " + String.Format("{0:0.00}", reference.getAccuracy()));
 				}
 			}
-			//Console.WriteLine("\nAfter the optimization:");
-			//printClusters();
-			//Console.WriteLine("ACC:\t" + String.Format("{0:0.00}", getACC()));
-			//Console.WriteLine("Value:\t" + ValueOfCS());
-			//stopWatch.Stop();
-			//TimeSpan ts = stopWatch.Elapsed;
-			//Console.WriteLine("RunTime " + ts.Milliseconds);
 		}
 
 		/// <summary>
@@ -164,7 +146,7 @@ namespace CGTF.Sim.Clustering
 			}
 			else if (A.StartData > S.StartData)
 			{
-				if (Math.Abs(1 - Math.Abs((A.StartData - S.Min) / (A.StartData))) >= QoS)
+				if ( 1 - Math.Abs((A.StartData - S.Min) / A.StartData) >= QoS)
 				{
 					return true;
 				}
@@ -175,7 +157,7 @@ namespace CGTF.Sim.Clustering
 			}
 			else if (A.StartData < S.StartData)
 			{
-				if (Math.Abs(1 - Math.Abs((A.StartData - S.Max) / (A.StartData))) >= QoS)
+				if ( 1 - Math.Abs((A.StartData - S.Max) / A.StartData) >= QoS)
 				{
 					return true;
 				}
@@ -305,21 +287,6 @@ namespace CGTF.Sim.Clustering
 						MaxAccuracy = _MinAccuracy;
 					}
 				}
-
-				//if (_SID == cluster.ID) //Did not find a VALID cluster
-				//{
-				//    //Break it!
-				//    foreach (var node in cluster.Nodes)
-				//    {
-				//        Cluster _tempCluster = new Cluster(node.Info.ID);
-				//        _tempCluster.Add(node);
-				//        Clusters.Add(_tempCluster);
-				//    }
-				//    Clusters.RemoveAll(x => x==cluster);
-				//    return;
-				//}
-				//else
-				//{
 				cluster.StartID = _SID;
 				cluster.StartData = _SIDMeasurement;
 				cluster.ID = (SimLib.Properties.Simulation.Default.Nodes * 100 + cluster.StartID);
@@ -348,7 +315,7 @@ namespace CGTF.Sim.Clustering
 		/// <returns>The data change in a scale [0,1]</returns>
 		private double getDataChange(double otherData, double referenceData)
 		{
-			if (Math.Abs(1 - Math.Abs((otherData - referenceData) / referenceData)) >= QoS)
+			if (1 - Math.Abs((otherData - referenceData) / referenceData) >= QoS)
 			{
 				return Math.Abs(1 - Math.Abs((otherData - referenceData) / referenceData));
 			}
@@ -367,6 +334,8 @@ namespace CGTF.Sim.Clustering
 			double ret = 0;
 			foreach (var Cluster in Clusters)
 			{
+                if (Cluster.getAccuracy() > 10000 || Cluster.Nodes.Count>100)
+                    Console.WriteLine("ds");
 				ret += (Cluster.Nodes.Count * Cluster.getAccuracy());
 			}
 			return 100.0 * ret / getNodeCount();

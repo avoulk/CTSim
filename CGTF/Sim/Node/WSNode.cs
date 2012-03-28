@@ -45,7 +45,7 @@ namespace CGTF
 			NeighborsDegree = new List<double>();
 			NeighboringClusters = new List<int>();
 			SID = Info.ID;
-			SIDMeasurement = 0;
+			SIDMeasurement = Data;
 			HCSID = Int32.MaxValue;
 			RID = UNKNOWN_RID;
 			HCRID = Int32.MaxValue;
@@ -273,13 +273,13 @@ namespace CGTF
 		/// <returns>The % data change</returns>
 		private double getDataChange(double nData)
 		{
-			if (Math.Abs(1 - Math.Abs((Data - nData) / nData)) >= QoS)
+			if (1 - Math.Abs((Data - nData) / nData) >= QoS)
 			{
-				return Math.Abs(1 - Math.Abs((Data - nData) / nData));
+				return 1 - Math.Abs((Data - nData) / nData);
 			}
 			else
 			{
-				return -1;
+				return double.MinValue;
 			}
 		}
 	}
