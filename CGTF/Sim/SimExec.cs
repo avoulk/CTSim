@@ -39,10 +39,6 @@ namespace CGTF
 			//Start!!!
 			field.Init();
 			simulate();
-			//Console.WriteLine("MSG: " + getMSG());
-			//Console.WriteLine("WLI: " + getWLI());
-			//Console.WriteLine("NCo: " + getNC());
-			//Console.WriteLine("ACC: " + getACC());
 		}
 
 		/// <summary>
@@ -249,7 +245,7 @@ namespace CGTF
 			Console.WriteLine("\nPrinting Clusters\n" +
 					"==============");
 			int MaxLength = field.Get().Count.ToString().Length;
-			MaxLength++;
+			MaxLength+=4;
 			for (int x = 0; x < field.Width; x++)
 			{
 				for (int y = 0; y < field.Height; y++)

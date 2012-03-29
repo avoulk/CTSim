@@ -116,9 +116,17 @@ namespace CGTF
 		private void handleMSGIformNodes(MSGInformNodes message)
 		{
 			//Console.WriteLine(QoS + "\t" + msg.GetType().FullName + "\t" + DateTime.Now);
-			if (!Informed && message.RID == RID)
+			if ( (!Informed) && message.RID == RID)
 			{
 				Informed = true;
+                if (!message.CS.ContainsKey(Info.ID))
+                {
+                    Console.WriteLine(Info.ID + "\tShit man!\t[Previous CID was " + this.CID + "]");
+                    CID = Info.ID;
+                    TransmissionProbability = 1;
+                    transmit(new MSGInformNodes(Info.ID, RID, message.CS));
+                    throw new Exception("Shit");
+                }
 				CID = message.CS[Info.ID];
 				int newClusterSize = 0;
 				foreach (var _mCID in message.CS.Values)
@@ -128,7 +136,6 @@ namespace CGTF
 						newClusterSize++;
 					}
 				}
-				//Console.WriteLine(Info.ID + "\tChanged to CID + " + CID + "\tProb = " + String.Format("{0:0.00}", 100.0 / newClusterSize) + "%");
 				TransmissionProbability = 1 / newClusterSize;
 				transmit(new MSGInformNodes(Info.ID, RID, message.CS));
 			}

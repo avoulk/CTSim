@@ -46,15 +46,22 @@ namespace CGTF.Sim.Clustering
 		/// <param name="message">The message</param>
 		private void handleMSGReportCluster(MSGReportCluster message)
 		{
+			bool clusterFound = false;
 			if (message.RID == Info.ID)
 			{
-				bool clusterFound = false;
+				
 				foreach (var cluster in Clusters)
 				{
 					if (cluster.ID == message.OriginalNode.CID)
 					{
 						cluster.Add(message.OriginalNode);
 						clusterFound = true;
+						//Console.Write("Added " + message.OriginalNode.Info.ID + " to existing CID " + cluster.ID + ". Members: ");
+						//foreach (var item in cluster.Nodes)
+						//{
+						//    Console.Write(item.Info.ID + " ");
+						//}
+						//Console.WriteLine();
 						break;
 					}
 				}
@@ -66,6 +73,7 @@ namespace CGTF.Sim.Clustering
 					ClustersI.Add(cluster.ID);
 				}
 			}
+			//Console.WriteLine("Got message from node " + message.OriginalNode.Info.ID + " with CID " + message.OriginalNode.CID + "\t" + clusterFound);
 		}
 
 		/// <summary>
@@ -121,15 +129,15 @@ namespace CGTF.Sim.Clustering
 						node.CID = reference.ID;
 						reference.Min = Math.Min(reference.Min, node.Data);
 						reference.Max = Math.Max(reference.Max, node.Data);
-						//Console.WriteLine("Adding node " + node.Info.ID + " to cluster " + reference.ID);
 						reference.Add(node);
 					}
 					other.Nodes.RemoveAll(x => x.CID == reference.ID);
 					Clusters.RemoveAll(x => x == other);
 					//Console.WriteLine("Removed CID " + other.ID);
-                    Console.WriteLine("Merged " + reference.ID + " and " + other.ID + "\tAccuracy: " + String.Format("{0:0.00}", reference.getAccuracy()));
+					//Console.WriteLine("Merged " + reference.ID + " and " + other.ID + "\tAccuracy: " + String.Format("{0:0.00}", reference.getAccuracy()));
 				}
 			}
+			//printClusters();
 		}
 
 		/// <summary>
@@ -209,8 +217,8 @@ namespace CGTF.Sim.Clustering
 		/// </summary>
 		public void printClusters()
 		{
-			Console.WriteLine("Clusters\n" +
-							  "========\n");
+			Console.WriteLine("\nREP ID: " + this.Info.ID + " Clusters\n" +
+							  "===================");
 			foreach (var cluster in Clusters)
 			{
 				Console.Write(cluster.ID + ":\t");
@@ -289,7 +297,7 @@ namespace CGTF.Sim.Clustering
 				}
 				cluster.StartID = _SID;
 				cluster.StartData = _SIDMeasurement;
-				cluster.ID = (SimLib.Properties.Simulation.Default.Nodes * 100 + cluster.StartID);
+				cluster.ID = (-1 * cluster.StartID);
 				//Fix Min, Max values
 				double _Min = Double.MaxValue;
 				double _Max = Double.MinValue;
@@ -303,7 +311,6 @@ namespace CGTF.Sim.Clustering
 				}
 				cluster.Max = _Max;
 				cluster.Min = _Min;
-				//}
 			}
 		}
 
@@ -334,8 +341,6 @@ namespace CGTF.Sim.Clustering
 			double ret = 0;
 			foreach (var Cluster in Clusters)
 			{
-                if (Cluster.getAccuracy() > 10000 || Cluster.Nodes.Count>100)
-                    Console.WriteLine("ds");
 				ret += (Cluster.Nodes.Count * Cluster.getAccuracy());
 			}
 			return 100.0 * ret / getNodeCount();

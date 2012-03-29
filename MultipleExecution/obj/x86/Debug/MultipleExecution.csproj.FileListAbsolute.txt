@@ -51,8 +51,6 @@ E:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\MathN
 E:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\zlib.net.dll
 E:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\CGTF.pdb
 E:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\SimLib.pdb
-E:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\MathNet.Numerics.pdb
-E:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\MathNet.Numerics.xml
 E:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\MultipleExecution.exe.config
 D:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\MultipleExecution.exe
@@ -66,3 +64,5 @@ D:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\SimLi
 D:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\obj\x86\Debug\MultipleExecution.exe
 D:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\obj\x86\Debug\MultipleExecution.pdb
+E:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\MathNet.Numerics.pdb
+E:\Documents\Visual Studio 2010\Projects\CTSim\MultipleExecution\bin\Debug\MathNet.Numerics.xml
