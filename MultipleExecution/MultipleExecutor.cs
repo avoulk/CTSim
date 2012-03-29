@@ -27,8 +27,8 @@ namespace MultipleExecution
 		// Data handler for the whole simulation
 		static Dictionary<int, Dictionary<int, Dictionary<string, double>>> SimulationStatisticsHolder;
 
-        static DateTime simStartTime;
-        static DateTime simEndTime;
+		static DateTime simStartTime;
+		static DateTime simEndTime;
 
 		/// <summary>
 		/// Main execution of the multiple execution paradigm.
@@ -50,8 +50,8 @@ namespace MultipleExecution
 			print();
 			Console.WriteLine("\nDone Configuring.\nStarting simulation\n");
 			//Main simulation stuff
-            //Initialize timer to calculate execution time
-            simStartTime = DateTime.Now;
+			//Initialize timer to calculate execution time
+			simStartTime = DateTime.Now;
 			//Here come the changes for the statistics gathering!
 			InitializeStatistics();
 			//Insert as delegate the main function of the main simulation project file!!
@@ -59,12 +59,12 @@ namespace MultipleExecution
 			//Gathering Full Statistics
 			Console.WriteLine("Gathering full simulation statistics..");
 			writeStatistics();
-            //End of main simulation
-            //Stop the execution timer :-)
-            simEndTime = DateTime.Now;
-            //Show execution time statistics
-            TimeSpan duration = simEndTime -simStartTime;
-            Console.WriteLine("Execution duration:\t" + simStartTime.ToShortTimeString() + " - " + simEndTime.ToShortTimeString() + "  [" + +duration.Hours + "h " + duration.Minutes + "' " + duration.Seconds + "'']");
+			//End of main simulation
+			//Stop the execution timer :-)
+			simEndTime = DateTime.Now;
+			//Show execution time statistics
+			TimeSpan duration = simEndTime -simStartTime;
+			Console.WriteLine("Execution duration:\t" + simStartTime.ToShortTimeString() + " - " + simEndTime.ToShortTimeString() + "  [" + +duration.Hours + "h " + duration.Minutes + "' " + duration.Seconds + "'']");
 		}
 
 		/// <summary>

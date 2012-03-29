@@ -104,7 +104,6 @@ namespace CGTF
 				HCSID = message.HC;
 				SID = message.CID;
 				ClusterStarter = false;
-				//Console.WriteLine(Info.ID + "MSGClusterQuery");
 				transmit(new MSGClusterQuery(Info.ID, MessageTargets.ALL_IN_RANGE, SIDMeasurement, RID, CID, HCSID + 1, estimateDEG(message)));
 			}
 		}
@@ -115,18 +114,17 @@ namespace CGTF
 		/// <param name="message">The message to handle</param>
 		private void handleMSGIformNodes(MSGInformNodes message)
 		{
-			//Console.WriteLine(QoS + "\t" + msg.GetType().FullName + "\t" + DateTime.Now);
 			if ( (!Informed) && message.RID == RID)
 			{
 				Informed = true;
-                if (!message.CS.ContainsKey(Info.ID))
-                {
-                    Console.WriteLine(Info.ID + "\tShit man!\t[Previous CID was " + this.CID + "]");
-                    CID = Info.ID;
-                    TransmissionProbability = 1;
-                    transmit(new MSGInformNodes(Info.ID, RID, message.CS));
-                    throw new Exception("Shit");
-                }
+				if (!message.CS.ContainsKey(Info.ID))
+				{
+					Console.WriteLine(Info.ID + "\tShit man!\t[Previous CID was " + this.CID + "]");
+					CID = Info.ID;
+					TransmissionProbability = 1;
+					transmit(new MSGInformNodes(Info.ID, RID, message.CS));
+					throw new Exception("Shit");
+				}
 				CID = message.CS[Info.ID];
 				int newClusterSize = 0;
 				foreach (var _mCID in message.CS.Values)
@@ -181,12 +179,10 @@ namespace CGTF
 		/// <param name="message">The message to handle</param>
 		private void handleMSGReportCluster(MSGReportCluster message)
 		{
-			//Console.WriteLine(QoS + "\t" + msg.GetType().FullName + "\t" + DateTime.Now);
 			if (message.RID == RID)
 			{
 				if (Previous != UNKNOWN_PREVIOUS)
 				{
-					//Console.WriteLine(Info.ID + "MSGReportCluster");
 					transmit(new MSGReportCluster(Info.ID, Previous, message.OriginalNode, message.RID));
 				}
 			}
@@ -288,6 +284,14 @@ namespace CGTF
 			{
 				return double.MinValue;
 			}
+		}
+
+		/// <summary>
+		/// Fix uninitialized data
+		/// </summary>
+		public void beginOwnCluster()
+		{
+			SIDMeasurement = Data;
 		}
 	}
 }

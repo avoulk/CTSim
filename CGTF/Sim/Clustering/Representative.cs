@@ -56,12 +56,6 @@ namespace CGTF.Sim.Clustering
 					{
 						cluster.Add(message.OriginalNode);
 						clusterFound = true;
-						//Console.Write("Added " + message.OriginalNode.Info.ID + " to existing CID " + cluster.ID + ". Members: ");
-						//foreach (var item in cluster.Nodes)
-						//{
-						//    Console.Write(item.Info.ID + " ");
-						//}
-						//Console.WriteLine();
 						break;
 					}
 				}
@@ -73,7 +67,6 @@ namespace CGTF.Sim.Clustering
 					ClustersI.Add(cluster.ID);
 				}
 			}
-			//Console.WriteLine("Got message from node " + message.OriginalNode.Info.ID + " with CID " + message.OriginalNode.CID + "\t" + clusterFound);
 		}
 
 		/// <summary>
@@ -133,11 +126,8 @@ namespace CGTF.Sim.Clustering
 					}
 					other.Nodes.RemoveAll(x => x.CID == reference.ID);
 					Clusters.RemoveAll(x => x == other);
-					//Console.WriteLine("Removed CID " + other.ID);
-					//Console.WriteLine("Merged " + reference.ID + " and " + other.ID + "\tAccuracy: " + String.Format("{0:0.00}", reference.getAccuracy()));
 				}
 			}
-			//printClusters();
 		}
 
 		/// <summary>
@@ -229,7 +219,14 @@ namespace CGTF.Sim.Clustering
 				{
 					Console.Write(NID.Info.ID + " ");
 				}
-				Console.WriteLine();
+				Console.Write("\tStartData = " + cluster.StartData);
+				foreach (var node in cluster.Nodes)
+				{
+					if (node.Info.ID == cluster.StartID)
+					{
+						Console.WriteLine("\tActual data = " + node.Data);
+					}
+				}
 			}
 		}
 
@@ -256,7 +253,7 @@ namespace CGTF.Sim.Clustering
 			double SIDM = cluster.StartData;
 			foreach (var node in cluster.Nodes)
 			{
-				if (node.Info.ID == cluster.ID)
+				if (node.Info.ID == cluster.StartID)
 				{
 					foundSID = true;
 					break;

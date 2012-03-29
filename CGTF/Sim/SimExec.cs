@@ -95,6 +95,7 @@ namespace CGTF
 				{
 					continue;
 				}
+				((WSNode)node).beginOwnCluster();
 				node.transmit(new MSGClusterQuery(node.Info.ID, MessageTargets.ALL_IN_RANGE, node.Data, ((WSNode)node).RID, node.Info.ID, 1, node.Neighbors.Count));
 			}
 			Field.Communications.startOfAnEra("Cluster initialization");
@@ -186,6 +187,14 @@ namespace CGTF
 			foreach (var Rep in Reps)
 			{
 				ret += Rep.getACC();
+			}
+			if (Math.Abs(ret) > 100*Reps.Count)
+			{
+				foreach (var item in Reps)
+				{
+					item.printClusters();
+				}
+				Console.WriteLine("Measured accuracy:\t" + ret);
 			}
 			return double.Parse(String.Format("{0:0.00}", ret / Reps.Count));
 		}

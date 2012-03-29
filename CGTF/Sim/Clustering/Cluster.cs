@@ -62,16 +62,20 @@ namespace CGTF.Sim.Clustering
 				double __Accuracy = getDataChange(node1.Data, StartData);
 				_MinAccuracy = Math.Min(__Accuracy, _MinAccuracy); //It is actually the minimum accuracy :-)
 			}
-            if (_MinAccuracy > 1)
-            {
-                _MinAccuracy = -double.MinValue;
-            }
+			if (_MinAccuracy > 1)
+			{
+				_MinAccuracy = double.MaxValue;
+			}
+			else if (_MinAccuracy < 0)
+			{
+				_MinAccuracy = double.MinValue;
+			}
 			return _MinAccuracy;
 		}
 
 		private double getDataChange(double otherData, double referenceData)
 		{
-			return Math.Abs(1 - Math.Abs((otherData - referenceData) / referenceData));
+			return 1 - Math.Abs((otherData - referenceData) / referenceData);
 		}
 	}
 }
